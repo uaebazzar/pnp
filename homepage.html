@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ourzap - Privacy Policy</title>
+    <style>
+        /* Page transition animations */
+        body {
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .page {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .page.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .feature-card {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .feature-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .cta-button {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease 0.2s;
+        }
+        
+        .cta-button.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .hero {
+            animation: slideUp 1s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: black;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: white;
+            border-bottom: 1px solid black;
+            padding: 25px;
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            width: 100%;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: black;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: black;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav a:hover {
+            color: black;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: black;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            transform: scaleX(1);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 20px 60px;
+            color: black;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            background: black;
+            color: white;
+            padding: 16px 42px;
+            border: 1px solid black;
+            border-radius: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            background: white;
+            color: black;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+            max-width: 1000px;
+            margin: 60px auto;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border: 1px solid black;
+            border-radius: 0;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: black;
+            color: white;
+            box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: black;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: black;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        footer {
+            background: black;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: auto;
+        }
+
+        .privacy-info {
+            background: white;
+            padding: 50px 40px;
+            border: 1px solid black;
+            border-radius: 0;
+            margin: 40px auto;
+            max-width: 1000px;
+        }
+
+        .privacy-info h2 {
+            color: black;
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .privacy-info p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: black;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add animation to feature cards on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card').forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Add animation to CTA button
+        window.addEventListener('load', function() {
+            const ctaButton = document.querySelector('.cta-button');
+            if (ctaButton) {
+                setTimeout(() => {
+                    ctaButton.classList.add('visible');
+                }, 800);
+            }
+        });
+        
+        // Page load animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="https://ik.imagekit.io/zbjvyzypz/photo_2025-12-31_19-19-06-Photoroom.png?updatedAt=1767194972041" alt="Ourzap Logo">
+                Ourzap
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="privacyandpolicy.html">Privacy Policy</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <h1>Ourzap Privacy Policy</h1>
+            <p>Transparent and secure data handling for your Ourzap experience</p>
+        </section>
+
+        <div class="privacy-info">
+            <h2>About Our Privacy Policy</h2>
+            <p>We take your privacy seriously. Our privacy policy outlines how we collect, use, and protect your personal information when you use our app and services.</p>
+            <p>Our commitment to privacy includes transparent data collection practices, secure storage of your information, and your rights regarding your personal data.</p>
+            <p>We believe in giving you control over your data and ensuring that your privacy is protected at all times. We only collect essential information such as your name and email address to provide and improve our services.</p>
+            <p>Importantly, we do not share your information with any third parties - your data remains private and secure with us.</p>
+        </div>
+
+        <div style="text-align: center; margin: 40px 0;">
+            <a href="privacyandpolicy.html" class="cta-button">View Full Privacy Policy</a>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <h3>Minimal Data Collection</h3>
+                <p>We only collect your name and email address - nothing more. No unnecessary data collection or tracking.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Secure Storage</h3>
+                <p>Your personal information is encrypted and securely stored with industry-leading security measures.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Transparent Practices</h3>
+                <p>We clearly communicate what data we collect and how it's used in our comprehensive privacy policy.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Ourzap. All rights reserved. | <a href="privacyandpolicy.html" style="color: white;">Privacy Policy</a></p>
+        <p>Contact: <a href="mailto:ourzap.app@gmail.com">ourzap.app@gmail.com</a> | Deira, Dubai Gold Souq, United Arab Emirates</p>
+    </footer>
+</body>
+</html>
